@@ -227,3 +227,135 @@ aside .second-section-aside {
 aside .second-section-aside p {
   font-weight: 300;
 }
+
+@media (max-width: 1024px) {
+  body {
+    padding: 1rem;
+  }
+
+  header {
+    padding: 2rem;
+  }
+
+  header nav {
+    gap: 2rem;
+  }
+
+  .container {
+    gap: 1rem;
+  }
+
+  main {
+    width: 60%;
+  }
+
+  aside {
+    width: 40%;
+  }
+
+  .section-title,
+  .section-description {
+    font-size: 1.25rem;
+    padding: 1.5rem 1.5rem 3rem;
+  }
+
+  .section-contact {
+    padding: 1.5rem 1.5rem 3rem;
+  }
+
+  .section-contact .div-contact h2 {
+    font-size: 3rem;
+  }
+
+  aside .first-section-aside {
+    padding: 2rem 1.5rem;
+  }
+
+  aside .first-section-aside p {
+    font-size: 1.5rem;
+  }
+
+  aside .second-section-aside {
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  header {
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  header nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  main,
+  aside {
+    width: 100%;
+  }
+
+  .first-section-container,
+  .second-section-container {
+    flex-direction: column;
+  }
+
+  .section-title,
+  .section-image,
+  .section-description,
+  .section-contact {
+    width: 100%;
+  }
+
+  .section-image {
+    min-height: 300px;
+  }
+
+  .section-title,
+  .section-description {
+    gap: 2rem;
+    font-size: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  .section-title .div-title,
+  .section-description .div-title {
+    width: 100%;
+  }
+
+  .section-contact {
+    min-height: 250px;
+    padding: 1.5rem;
+  }
+
+  .section-contact .div-contact h2 {
+    font-size: 2.5rem;
+  }
+
+  aside .first-section-aside {
+    padding: 1.5rem;
+  }
+
+  aside .first-section-aside .div-list {
+    gap: 1.5rem;
+  }
+
+  aside .second-section-aside {
+    padding: 1.5rem;
+  }
+}
