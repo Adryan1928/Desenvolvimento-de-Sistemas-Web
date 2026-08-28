@@ -220,3 +220,7 @@ __marimo__/
 
 # MAC
 .DS_Store
+
+# JS
+node_modules/
+package-lock.json
