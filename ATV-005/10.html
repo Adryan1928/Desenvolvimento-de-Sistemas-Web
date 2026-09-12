@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque</title>
+    <style>
+        .alerta {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Estoque de Produtos</h1>
+        <ul id="estoqueList">
+        </ul>
+
+        <form action=".">
+            <label for="minimo">Quantidade mínima para alerta:</label>
+            <input type="number" id="minimo" name="minimo" required>
+            <button type="submit">Analisar Estoque</button>
+        </form>
+
+        <div id="resultado"></div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const estoqueList = document.getElementById('estoqueList');
+            const resultadoDiv = document.getElementById('resultado');
+
+            const estoque = [
+                { nome: "Produto 1", quantidade: 10, preco: 5.0 },
+                { nome: "Produto 2", quantidade: 20, preco: 10.0 },
+                { nome: "Produto 3", quantidade: 30, preco: 15.0 }
+            ];
+
+            estoque.forEach(produto => {
+                const li = document.createElement('li');
+                li.textContent = `${produto.nome} - Quantidade: ${produto.quantidade}, Preço: R$${produto.preco.toFixed(2)}`;
+                estoqueList.appendChild(li);
+            });
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const minimo = parseInt(document.getElementById('minimo').value);
+                const analise = analiseEstoque(estoque, minimo);
+                resultadoDiv.innerHTML = `<p>Valor Total: R$${analise.ValorTotal.toFixed(2)}</p><p>Produto Mais Caro: ${analise.ProdutoMaisCaro.nome} - Preço: R$${analise.ProdutoMaisCaro.preco.toFixed(2)}</p>`;
+
+                estoqueList.querySelectorAll('li').forEach((li, index) => {
+                    if (estoque[index].quantidade <= minimo) {
+                        li.classList.add('alerta');
+                    } else {
+                        li.classList.remove('alerta');
+                    }
+                });
+            });
+
+
+        });
+
+        function analiseEstoque(estoque, minimo) {
+            let valorTotal = estoque.reduce((total, produto) => total + (produto.quantidade * produto.preco), 0);
+            let produtoMaisCaro = estoque.find(produto => produto.preco === Math.max(...estoque.map(p => p.preco)));
+
+            return {
+                ValorTotal: valorTotal,
+                ProdutoMaisCaro: produtoMaisCaro,
+            };
+        }
+    </script>
+</body>
+</html>

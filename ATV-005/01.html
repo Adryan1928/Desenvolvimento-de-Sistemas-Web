@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+    <style>
+        .passou {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Item 1, passou tbm</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4, mas que passou</li>
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const listItems = document.querySelectorAll('ul li');
+            listItems.forEach(item => {
+                if (item.textContent.length > 10) {
+                    item.classList.add('passou');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

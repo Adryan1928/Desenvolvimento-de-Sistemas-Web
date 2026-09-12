@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+    <main>
+        <form action=".">
+            <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+            <input type="email" name="email" id="email" placeholder="Digite seu email">
+            <input type="number" name="idade" id="idade" placeholder="Digite sua idade">
+            <input type="submit" value="Enviar">
+        </form>
+        <div id="resultado">
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const resultadoDiv = document.getElementById('resultado');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const idade = document.getElementById('idade').value;
+
+                if (!nome || !email || !idade) {
+                    alert('Por favor, preencha todos os campos.');
+                    return;
+                }
+
+                resultadoDiv.innerHTML = `
+                    <p>Nome: ${nome}</p>
+                    <p>Email: ${email}</p>
+                    <p>Idade: ${idade} anos</p>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

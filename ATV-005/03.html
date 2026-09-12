@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas</title>
+    <style>
+        .concluido {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Lista de Tarefas</h1>
+        <ul>
+            <li>Tarefa 1</li>
+            <li>Tarefa 2</li>
+            <li>Tarefa 3</li>
+        </ul>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tarefas = document.querySelectorAll('ul li');
+            tarefas.forEach(tarefa => {
+                tarefa.addEventListener('click', function() {
+                    this.classList.toggle('concluido');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
