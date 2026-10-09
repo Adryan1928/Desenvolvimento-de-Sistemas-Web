@@ -2,8 +2,6 @@
 
 from django.db import migrations, transaction
 
-transaction
-
 def autor_to_atores(apps, schema_editor):
     Livro = apps.get_model('biblioteca', 'Livro')
 
