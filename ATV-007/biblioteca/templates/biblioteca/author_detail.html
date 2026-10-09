@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autor</title>
+</head>
+<body>
+    <main>
+        <h1>{{ autor.nome }}</h1>
+        <p>Nacionalidade: {{ autor.nacionalidade }}</p>
+        <p>Livros:</p>
+        <ul>
+            {% for livro in autor.books.all %}
+                <li>{{ livro.titulo }} - ({{ livro.ano_publicacao }})</li>
+            {% empty %}
+                <li>Este autor não possui livros cadastrados.</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
