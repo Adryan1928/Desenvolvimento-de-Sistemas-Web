@@ -3,9 +3,9 @@ from .models import Livro, Categoria, Autor
 
 
 class LivroAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'get_autores', 'ano_publicacao', 'disponivel')
+    list_display = ('titulo', 'autor', 'ano_publicacao', 'disponivel')
     list_filter = ('disponivel',)
-    search_fields = ('titulo', 'autores__nome')
+    search_fields = ('titulo',)
     filter_horizontal = ('categorias',)
 
 class CategoriaAdmin(admin.ModelAdmin):
@@ -13,7 +13,7 @@ class CategoriaAdmin(admin.ModelAdmin):
     search_fields = ('nome',)
 
 class AutorLivroInline(admin.TabularInline):
-    model = Autor.livros.through
+    model = Livro
     extra = 1
 class AutorAdmin(admin.ModelAdmin):
     list_display = ('nome', 'nacionalidade')
