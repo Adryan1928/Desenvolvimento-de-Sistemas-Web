@@ -11,7 +11,7 @@
         <p>Nacionalidade: {{ autor.nacionalidade }}</p>
         <p>Livros:</p>
         <ul>
-            {% for livro in autor.books.all %}
+            {% for livro in autor.livros.all %}
                 <li>{{ livro.titulo }} - ({{ livro.ano_publicacao }})</li>
             {% empty %}
                 <li>Este autor não possui livros cadastrados.</li>
