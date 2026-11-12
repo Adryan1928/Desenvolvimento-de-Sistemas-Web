@@ -12,7 +12,7 @@
         <p>Livros:</p>
         <ul>
             {% for livro in autor.livros.all %}
-                <li>{{ livro.titulo }} - ({{ livro.ano_publicacao }})</li>
+                <li>{{ livro.titulo }} - ({{ livro.ano_publicacao }}) - <a href="{% url 'biblioteca:editar_livro' livro.id %}">Editar</a></li>
             {% empty %}
                 <li>Este autor não possui livros cadastrados.</li>
             {% endfor %}
