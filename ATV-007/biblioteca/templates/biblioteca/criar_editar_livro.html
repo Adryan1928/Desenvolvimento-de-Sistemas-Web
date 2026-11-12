@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if is_editing %}Editar{% else %}Criar{% endif %} Livro</title>
+</head>
+<body>
+    <main>
+        <h1>{% if is_editing %}Editar{% else %}Criar{% endif %} Livro</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+                </p>
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            <button><a href="{% url 'biblioteca:listar_livros' %}">Cancelar</a></button>
+            <button type="submit">Salvar</button>
+        </form>
+    </main>
+</body>
+</html>
