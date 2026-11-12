@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Autor</title>
+</head>
+<body>
+    <main>
+        <h1>Criar Autor</h1>
+        <form method="post" action=".">
+            {% csrf_token %}
+            {% for field in form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+                </p>
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            <button type="submit">Criar</button>
+        </form>
+    </main>
+</body>
+</html>
