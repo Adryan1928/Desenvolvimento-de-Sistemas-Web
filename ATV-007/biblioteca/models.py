@@ -19,7 +19,8 @@ class Categoria(models.Model):
 
 class Livro(models.Model):
     titulo = models.CharField(max_length=200)
-    autores = models.ManyToManyField(Autor, related_name='livros')
+    autor = models.ForeignKey(Autor, related_name='books', on_delete=models.CASCADE, null=True, blank=True)
+    # autores = models.ManyToManyField(Autor, related_name='livros')
     ano_publicacao = models.IntegerField()
     disponivel = models.BooleanField(default=True)
     categorias = models.ManyToManyField(Categoria, blank=True)
@@ -27,5 +28,5 @@ class Livro(models.Model):
     def __str__(self):
         return self.titulo
 
-    def get_autores(self):
-        return "\n".join([a.nome + ", " for a in self.autores.all()])
+    # def get_autores(self):
+    #     return "\n".join([a.nome + ", " for a in self.autores.all()])
