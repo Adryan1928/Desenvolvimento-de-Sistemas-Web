@@ -1,6 +1,11 @@
 from django.db import models
-from django.core.validators import MinLengthValidator
-from .validators import validate_ano_publicacao, validate_paginas, validate_isbn
+from django.core.validators import FileExtensionValidator, MinLengthValidator
+from .validators import (
+    validar_tamanho_arquivo,
+    validate_ano_publicacao,
+    validate_isbn,
+    validate_paginas,
+)
 
 class Autor(models.Model):
     nome = models.CharField(max_length=200)
@@ -28,6 +33,13 @@ class Livro(models.Model):
     categorias = models.ManyToManyField(Categoria, blank=True)
     paginas = models.PositiveIntegerField(null=True, blank=True, validators=[validate_paginas])
     isbn = models.CharField(max_length=13, null=True, blank=True, validators=[validate_isbn])
+    capa = models.ImageField(
+        upload_to='capas/',
+        validators=[
+            validar_tamanho_arquivo,
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+        ],
+    )
 
     def __str__(self):
         return self.titulo

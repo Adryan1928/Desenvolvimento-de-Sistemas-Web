@@ -32,7 +32,7 @@ def criar_editar_livro(request, livro_id=None):
         livro = None
 
     if request.method == 'POST':
-        form = LivroForm(request.POST, instance=livro)
+        form = LivroForm(request.POST, request.FILES, instance=livro)
         if form.is_valid():
             form.save()
             return redirect('biblioteca:author_detail', author_id=form.instance.autores.first().id)

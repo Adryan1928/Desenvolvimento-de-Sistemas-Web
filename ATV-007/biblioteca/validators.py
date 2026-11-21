@@ -2,6 +2,12 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 
 
+def validar_tamanho_arquivo(value):
+    limite_em_bytes = 1 * 1024 * 1024
+    if value.size > limite_em_bytes:
+        raise ValidationError("A capa não pode ser maior que 1 MB.")
+
+
 def validate_ano_publicacao(value):
     year = datetime.now().year
     if value < 1450 or value > year:

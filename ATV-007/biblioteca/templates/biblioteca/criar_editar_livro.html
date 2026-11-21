@@ -8,7 +8,7 @@
 <body>
     <main>
         <h1>{% if is_editing %}Editar{% else %}Criar{% endif %} Livro</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
                 <p>

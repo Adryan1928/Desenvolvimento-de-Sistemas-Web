@@ -36,3 +36,12 @@ CSRF verification failed. Request aborted.
             Validator, porque não podemos modificar por conta própria, então deve-se retorna o erro ao usuário e pedir uma nova entrada.
         - Um livro "indisponível" precisa ter o ISBN preenchido.
             clean, porque envolve mais de um campo e é uma validação no formulário.
+
+- 2.2
+    - A: Sem passar `request.FILES` ao formulário, o arquivo que chegou ao servidor não é associado ao campo. Sem `enctype="multipart/form-data"`, o navegador não envia o conteúdo do arquivo como upload e `request.FILES` fica vazio. Em nenhum do casos dá erro, mas em nenhum a imagem é modificada, ou seja, o forms não retornar nenhum erro, mas não acontece o comportamento esperado.
+
+    - B: Arquivos estáticos são recursos da aplicação distribuídos junto com o código, como CSS, JavaScript e ícones; `STATICFILES_DIRS` informa diretórios adicionais de busca e `{% static '...' %}` gera sua URL. `MEDIA_ROOT` é o diretório de armazenamento dos arquivos enviados pelos usuários; o campo `ImageField` guarda o caminho relativo e `livro.capa.url` fornece a URL para exibi-lo. Na Mini biblioteca, estilos e ícones pertencem a static; capas cadastradas pertencem a media.
+
+    - C: O banco guarda apenas o caminho do arquivo. Excluir o registro ou substituir esse caminho não apaga automaticamente o arquivo do armazenamento. Com o tempo, capas órfãs ocupam espaço, aumentam o custo de armazenamento e backups e podem permanecer acessíveis sem estarem associadas a um livro.
+
+    - D: A extensão é apenas parte do nome e pode ser falsificada; um arquivo com sufixo `.png` não necessariamente contém uma imagem PNG segura. `ImageField` valida o conteúdo da imagem, mas isso não substitui controles de segurança. O servidor também deve impor limites de tamanho e, conforme o risco, dimensões e quantidade de pixels; não confiar no nome nem no MIME type informado pelo cliente; gerar nomes seguros; armazenar uploads sem permissão de execução e, quando possível, fora da raiz pública; restringir quem pode enviar arquivos;

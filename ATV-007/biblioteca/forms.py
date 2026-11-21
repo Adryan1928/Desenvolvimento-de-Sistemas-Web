@@ -16,7 +16,16 @@ class AutorForm(forms.ModelForm):
 class LivroForm(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['titulo', 'autores', 'ano_publicacao', 'disponivel', 'categorias', 'paginas', 'isbn']
+        fields = [
+            'titulo',
+            'autores',
+            'ano_publicacao',
+            'disponivel',
+            'categorias',
+            'paginas',
+            'isbn',
+            'capa',
+        ]
         labels = {
             'titulo': 'Título do Livro',
             'autores': 'Autores',
@@ -25,6 +34,7 @@ class LivroForm(forms.ModelForm):
             'categorias': 'Categorias',
             'paginas': 'Páginas',
             'isbn': 'ISBN',
+            'capa': 'Capa',
         }
 
 
