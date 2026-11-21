@@ -18,3 +18,21 @@ Ao remover a proteção, que é o csrf_token, o Django não permite que o formul
 Erro identificado:
 Forbidden (403)
 CSRF verification failed. Request aborted.
+
+
+## Atividade Sábado Letivo 1 -  validators, upload e CBV
+
+- 1.2
+    - A: Sim, porque no meu caso não estou usando o '__all__' nos fields, então preciso modificar isso manualmente junto com os labels. Por ser um model form, ele já consegue identificar essas modificações na model e refletir isso no admin e no próprio template, chamando o form ou usando um for para passar por cada campo.
+
+    - B: Validator apenas valida o valor e retorna um true ou false para o formulário indicanto o erro, além de ele ser aplicado na model para poder ser reutilizado. O clean é aplicado no formulário como um processo de sanitização, onde se é necessário fazer uma validação, mas também aplicar métodos como strip ou lowerCase. Exemplo disso seria um campo de email, onde ele não é case sensitive, ou seja, pode-se aplicar um clean com o lower case para idependente da entrada do usuário, sempre lidar com ele em letras minúsculas.
+
+    - C: 
+        - O título não pode ser igual ao nome do autor.
+            Validator, porque não podemos modificar por conta própria, então deve-se retorna o erro ao usuário e pedir uma nova entrada.
+        - O título deve ser salvo sem espaços no início e no fim.
+            clean_<campo\>, porque podemos fazer esse processo de sanitização sem intervenção do usuário, e por ser em um único campo, basta usar o clean_<campo\> 
+        - O número de páginas deve ser no máximo 5000.
+            Validator, porque não podemos modificar por conta própria, então deve-se retorna o erro ao usuário e pedir uma nova entrada.
+        - Um livro "indisponível" precisa ter o ISBN preenchido.
+            clean, porque envolve mais de um campo e é uma validação no formulário.
