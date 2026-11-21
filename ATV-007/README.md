@@ -45,3 +45,12 @@ CSRF verification failed. Request aborted.
     - C: O banco guarda apenas o caminho do arquivo. Excluir o registro ou substituir esse caminho não apaga automaticamente o arquivo do armazenamento. Com o tempo, capas órfãs ocupam espaço, aumentam o custo de armazenamento e backups e podem permanecer acessíveis sem estarem associadas a um livro.
 
     - D: A extensão é apenas parte do nome e pode ser falsificada; um arquivo com sufixo `.png` não necessariamente contém uma imagem PNG segura. `ImageField` valida o conteúdo da imagem, mas isso não substitui controles de segurança. O servidor também deve impor limites de tamanho e, conforme o risco, dimensões e quantidade de pixels; não confiar no nome nem no MIME type informado pelo cliente; gerar nomes seguros; armazenar uploads sem permissão de execução e, quando possível, fora da raiz pública; restringir quem pode enviar arquivos;
+
+- 3.1
+    - A: As funções já presentes na própria CBV já validam isso e chamam os métodos GET e POST: GET exibe o formulário; POST o valida e chama `form_valid` ou `form_invalid`. Se estiver inválido, a mesma página é renderizada novamente com os dados enviados e os erros de validação.
+
+    - B: Porque já inclui `request.POST` e `request.FILES` automaticamente quando a requisição é POST. Assim, `CreateView` e `UpdateView` entregam os arquivos ao `ModelForm` automaticamente.
+
+    - C: O GET é usado para exibir a confirmação; o POST expressa a ação de exclusão. Isso respeita a semântica HTTP de que GET não deve alterar dados. Excluir em GET permitiria que um link ou uma requisição indevida apagasse registros sem confirmação e poderia causar exclusões acidentais.
+
+    - D: Uma vantagem é reutilizar comportamentos prontos (por exemplo, validação, renderização e redirecionamento de formulários) com menos código repetido. Uma desvantagem é que o fluxo pode ficar menos explícito e mais difícil de acompanhar quando envolve muitas mixins e sobrescritas. Eu escolheria uma FBV para um fluxo pequeno, específico ou com ramificações simples, quando a sequência explícita de passos for mais clara do que adaptar uma CBV genérica.

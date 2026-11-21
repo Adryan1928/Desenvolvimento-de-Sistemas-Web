@@ -10,6 +10,7 @@
         <h1>Lista de livros</h1>
         <button><a href="{% url 'biblioteca:criar_autor' %}">Criar Autor</a></button>
         <button><a href="{% url 'biblioteca:criar_livro' %}">Criar Livro</a></button>
+        <button><a href="{% url 'biblioteca:sobre' %}">Sobre</a></button>
         {% for livro in livros %}
            <p> <strong>Título:</strong> {{ livro.titulo }} </p>
            {% if livro.capa %}
@@ -22,6 +23,7 @@
            {% endfor %}
            <p> <strong>Ano de publicação:</strong>{{ livro.ano_publicacao }}</p>
            <button><a href="{% url 'biblioteca:editar_livro' livro.id %}">Editar</a></button>
+           <button><a href="{% url 'biblioteca:excluir_livro' livro.id %}">Excluir</a></button>
            <hr width="25%" align="left">
         {% endfor %}
     </main>
