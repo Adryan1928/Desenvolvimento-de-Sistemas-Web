@@ -1,11 +1,21 @@
 from django.urls import path
-from .views import listar_livros, author_detail, criar_autor, criar_editar_livro
+from .views import (
+    LivroCreateView,
+    LivroDeleteView,
+    LivroListView,
+    LivroUpdateView,
+    SobreView,
+    AuthorCreateView,
+    AuthorDetailView
+)
 
 app_name = 'biblioteca'
 urlpatterns = [
-    path('listar_livros/', listar_livros, name='listar_livros'),
-    path('author/<int:author_id>/', author_detail, name='author_detail'),
-    path('criar_autor/', criar_autor, name='criar_autor'),
-    path('criar_editar_livro/', criar_editar_livro, name='criar_livro'),
-    path('criar_editar_livro/<int:livro_id>/', criar_editar_livro, name='editar_livro'),
+    path('listar_livros/', LivroListView.as_view(), name='listar_livros'),
+    path('author/<int:author_id>/', AuthorDetailView.as_view(), name='author_detail'),
+    path('criar_autor/', AuthorCreateView.as_view(), name='criar_autor'),
+    path('criar_editar_livro/', LivroCreateView.as_view(), name='criar_livro'),
+    path('criar_editar_livro/<int:livro_id>/', LivroUpdateView.as_view(), name='editar_livro'),
+    path('criar_editar_livro/<int:livro_id>/excluir/', LivroDeleteView.as_view(), name='excluir_livro'),
+    path('sobre/', SobreView.as_view(), name='sobre'),
 ]

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir livro</title>
+</head>
+<body>
+    <main>
+        <h1>Excluir livro</h1>
+        <p>Tem certeza de que deseja excluir "{{ object.titulo }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirmar exclusão</button>
+            <a href="{% url 'biblioteca:listar_livros' %}">Cancelar</a>
+        </form>
+    </main>
+</body>
+</html>

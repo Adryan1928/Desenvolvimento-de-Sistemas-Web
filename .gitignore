@@ -224,3 +224,5 @@ __marimo__/
 # JS
 node_modules/
 package-lock.json
+
+/ATV-007/media/
