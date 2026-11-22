@@ -1,0 +1,11 @@
+# Segredos e configurações locais
+.env
+
+# Banco SQLite legado/local
+db.sqlite3
+db.sqlite3-journal
+
+# Ambiente virtual e artefatos Python
+venv/
+__pycache__/
+*.py[cod]

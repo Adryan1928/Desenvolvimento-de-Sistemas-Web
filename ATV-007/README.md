@@ -54,3 +54,66 @@ CSRF verification failed. Request aborted.
     - C: O GET é usado para exibir a confirmação; o POST expressa a ação de exclusão. Isso respeita a semântica HTTP de que GET não deve alterar dados. Excluir em GET permitiria que um link ou uma requisição indevida apagasse registros sem confirmação e poderia causar exclusões acidentais.
 
     - D: Uma vantagem é reutilizar comportamentos prontos (por exemplo, validação, renderização e redirecionamento de formulários) com menos código repetido. Uma desvantagem é que o fluxo pode ficar menos explícito e mais difícil de acompanhar quando envolve muitas mixins e sobrescritas. Eu escolheria uma FBV para um fluxo pequeno, específico ou com ramificações simples, quando a sequência explícita de passos for mais clara do que adaptar uma CBV genérica.
+
+
+## Atividade Sábado Letivo 2 - Conexão com banco de dados
+
+1. 
+O SQLite é melhor para aplicações de pequeno porte, como teste locais e desenvolvimento, já que possui escalabilidade limitada.
+O PostgreSQL é melhor para aplicações robusta, pois possui capacidade de escalabilidade e tem mais ferramentas, o tornando mais completo.
+
+2. 
+psycopg[binary]
+pip install "psycopg[binary]" 
+
+3. 
+ENGINE: Backend usado pelo Django; aqui, `django.db.backends.postgresql`.
+NAME: Nome do banco de dados no servidor PostgreSQL. No SQLite, seria o caminho do arquivo.
+USER: Usuário do PostgreSQL usado pela aplicação na conexão.
+PASSWORD: Senha desse usuário.
+HOST: Endereço do servidor do banco; `localhost` nesta instalação local.
+PORT: Porta TCP do serviço PostgreSQL; normalmente `5432`.
+
+4. 
+https://www.postgresql.org/docs/current/sql-createrole.html
+```sql
+CREATE ROLE biblioteca_app LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE
+    NOINHERIT NOREPLICATION NOBYPASSRLS PASSWORD '<senha-forte>';
+CREATE DATABASE biblioteca_db OWNER biblioteca_app;
+\c biblioteca_db
+GRANT USAGE, CREATE ON SCHEMA public TO biblioteca_app;
+```
+
+5. 
+São variáveis que são lidas ao executar o código e não ficam salvas dentro dele. Isso garante uma maior segurança, já que senhas e keys secretas não ficam expostas no código e podem ser modificadas facilmente para cada ambiente.
+
+6. 
+
+Pode-se usar a biblioteca OS com a dotenv.
+
+from dotenv import load_dotenv
+load_dotenv()
+
+os.getenv().
+
+7. 
+O .gitignore diz ao git quais pastas/arquivos ignorar durante um commit, para evitar que esses arquivos vão para o repositório.
+
+Já o .env.exemple é somente um exemplo de um .env para ser copiado e depois mudar os valores para casos reais.
+
+8. 
+
+Todas as configurações de banco, o debug, allowed hosts, secret key, configurações de email...
+
+Todas essas informações sensiveis e que tenham grande impacto no sistemas devem ficar no .env.
+
+### Fontes
+https://docs.djangoproject.com/en/6.1/ref/databases/#postgresql-notes
+https://www.datacamp.com/pt/blog/sqlite-vs-postgresql-detailed-comparison
+https://www.geeksforgeeks.org/python/python-os-getenv-method/
+https://www.postgresql.org/docs/current/sql-createrole.html
+https://docs.djangoproject.com/en/6.1/topics/db/fixtures/
+
+
+### Evidências
+![img](<test.png>)

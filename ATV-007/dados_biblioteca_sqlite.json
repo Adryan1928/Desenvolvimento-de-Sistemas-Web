@@ -1,0 +1,266 @@
+[
+{
+  "model": "biblioteca.autor",
+  "pk": 1,
+  "fields": {
+    "nome": "Machado de Assis",
+    "nacionalidade": "Brasileira"
+  }
+},
+{
+  "model": "biblioteca.autor",
+  "pk": 2,
+  "fields": {
+    "nome": "Adryan",
+    "nacionalidade": "Brasileira"
+  }
+},
+{
+  "model": "biblioteca.autor",
+  "pk": 3,
+  "fields": {
+    "nome": "Adryan Eryk 2",
+    "nacionalidade": "Brasil"
+  }
+},
+{
+  "model": "biblioteca.autor",
+  "pk": 4,
+  "fields": {
+    "nome": "Adryan Eryk de Oliveira Leite",
+    "nacionalidade": "Brasil"
+  }
+},
+{
+  "model": "biblioteca.autor",
+  "pk": 5,
+  "fields": {
+    "nome": "Adryan Eryk de Oliveira Leite",
+    "nacionalidade": "Brasil"
+  }
+},
+{
+  "model": "biblioteca.categoria",
+  "pk": 1,
+  "fields": {
+    "nome": "Ação"
+  }
+},
+{
+  "model": "biblioteca.categoria",
+  "pk": 2,
+  "fields": {
+    "nome": "Romance"
+  }
+},
+{
+  "model": "biblioteca.categoria",
+  "pk": 3,
+  "fields": {
+    "nome": "Fantasia"
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 1,
+  "fields": {
+    "titulo": "Dom Casmurro",
+    "ano_publicacao": 1903,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "capas/download_1_page-0001_hGwKvTo.jpg",
+    "autores": [
+      1
+    ],
+    "categorias": [
+      2
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 2,
+  "fields": {
+    "titulo": "O fim do mundo",
+    "ano_publicacao": 2026,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "capas/download_1_page-0001.jpg",
+    "autores": [
+      2
+    ],
+    "categorias": [
+      1,
+      3
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 3,
+  "fields": {
+    "titulo": "O começo após o fim",
+    "ano_publicacao": 2027,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "a",
+    "autores": [
+      2
+    ],
+    "categorias": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 4,
+  "fields": {
+    "titulo": "Livro 1",
+    "ano_publicacao": 2017,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "a",
+    "autores": [
+      1
+    ],
+    "categorias": [
+      2
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 5,
+  "fields": {
+    "titulo": "Livro 2",
+    "ano_publicacao": 2017,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "a",
+    "autores": [
+      2
+    ],
+    "categorias": [
+      3
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 6,
+  "fields": {
+    "titulo": "Livro 3",
+    "ano_publicacao": 2018,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "a",
+    "autores": [
+      1
+    ],
+    "categorias": [
+      2
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 7,
+  "fields": {
+    "titulo": "Livro 4",
+    "ano_publicacao": 2019,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "a",
+    "autores": [
+      1
+    ],
+    "categorias": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 8,
+  "fields": {
+    "titulo": "Livro 5",
+    "ano_publicacao": 2020,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "a",
+    "autores": [
+      1
+    ],
+    "categorias": [
+      2
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 9,
+  "fields": {
+    "titulo": "Livro 6",
+    "ano_publicacao": 2019,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "a",
+    "autores": [
+      2
+    ],
+    "categorias": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 11,
+  "fields": {
+    "titulo": "O melhor livro do mundo-parte 1",
+    "ano_publicacao": 2026,
+    "disponivel": true,
+    "paginas": 300,
+    "isbn": "1231231231233",
+    "capa": "a",
+    "autores": [
+      3
+    ],
+    "categorias": [
+      1
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 15,
+  "fields": {
+    "titulo": "Livro 7",
+    "ano_publicacao": 2000,
+    "disponivel": true,
+    "paginas": null,
+    "isbn": null,
+    "capa": "capas/Blue_Pipe_with_Coupling_Ends_XbG8Pcp.png",
+    "autores": [
+      5
+    ],
+    "categorias": [
+      2
+    ]
+  }
+}
+]
