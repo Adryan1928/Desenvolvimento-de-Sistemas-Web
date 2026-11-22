@@ -117,3 +117,9 @@ https://docs.djangoproject.com/en/6.1/topics/db/fixtures/
 
 ### Evidências
 ![img](<test.png>)
+
+### Settings
+
+https://github.com/Adryan1928/Desenvolvimento-de-Sistemas-Web/blob/9950af59fd3dc52dbfbbae3fe00acd74aa921757/ATV-007/core/settings.py
+
+https://github.com/Adryan1928/Desenvolvimento-de-Sistemas-Web/blob/81b494694504640ef86160483df0bc12fa18a5ad/ATV-007/core/settings.py
